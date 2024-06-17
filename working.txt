@@ -1,0 +1,59 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import base64
+import numpy as np
+import cv2
+import face_recognition
+import os
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Allows all origins, or specify domains e.g., ["http://localhost:3000"]
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+face_storage = {}
+
+class ImageData(BaseModel):
+    images: list[str]
+    username: str
+
+@app.post("/register")
+async def register_faces(data: ImageData):
+    try:
+        user_folder = f'knownfaces/{data.username}'
+        if not os.path.exists(user_folder):
+            os.makedirs(user_folder)
+
+        face_encodings_list = []  # To store face encodings
+        for index, base64_image in enumerate(data.images):
+            # Decode the image
+            encoded_data = base64_image.split(',')[1]
+            decoded_data = base64.b64decode(encoded_data)
+            nparr = np.frombuffer(decoded_data, np.uint8)
+            img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+            # Convert the image from BGR (OpenCV format) to RGB (face_recognition format)
+            rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+            # Detect faces in the image
+            face_locations = face_recognition.face_locations(rgb_img)
+            face_encodings = face_recognition.face_encodings(rgb_img, face_locations)
+
+            # Optionally save face encodings or further process them
+            face_encodings_list.extend(face_encodings)  # Example of collecting encodings
+
+            # Save the image
+            img_path = os.path.join(user_folder, f"{data.username}_{index}.png")
+            cv2.imwrite(img_path, img)
+
+        # Additional processing can be done here with face_encodings_list if needed
+
+        return {"message": "Images received and faces processed.", "count": len(data.images)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

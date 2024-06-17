@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="home-container">
+        <button class="capture-button" onclick="location.href='/capture';">
+            Capture Your Face
+        </button>
+        <button class="Admin-button" onclick="location.href='/admin';">
+            Admin
+        </button>
+        <button class="Recognizer-button" onclick="location.href='/recognizer';">
+            Recognizer
+        </button>
+    </div>
+</body>
+</html>

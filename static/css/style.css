@@ -1,0 +1,347 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 96vh;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+/* Button styles */
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px; /* Add margin between buttons */
+}
+
+/* Capture button styles */
+.capture-button {
+    background-color: #007bff;
+}
+
+.capture-button:hover {
+    background-color: #0056b3;
+}
+
+.capture-button:active {
+    background-color: #004080;
+}
+
+/* Recognizer button styles */
+.Recognizer-button {
+    background-color: #28a745;
+}
+
+.Recognizer-button:hover {
+    background-color: #218838;
+}
+
+.Recognizer-button:active {
+    background-color: #1e7e34;
+}
+
+
+.Admin-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #dc3545;
+}
+
+.Admin-button:hover {
+    background-color: #c82333;
+}
+
+.Admin-button:active {
+    background-color: #bd2130;
+}
+
+.admin-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.photo-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004080;
+}
+
+.recognizer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    max-width: 1140px;
+    margin: 0 auto; 
+  }
+  
+  .recognizer-container h1 {
+    font-size: 2rem;
+    color: #f86666;
+  }
+  
+  .recognizer-container img {
+    border: 5px solid #7cf0ff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.322);
+    margin-bottom: 20px;
+  }
+  
+  .recognizer-container .table-container {
+    width: 100%;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+  
+  .recognizer-container table {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+  }
+  
+  .recognizer-container th, .recognizer-container td {
+    border: 1px solid #a19e9e;
+    text-align: center;
+    padding: 8px;
+  }
+  
+  .recognizer-container th {
+    background-color: #92bbe2;
+  }
+  
+  .recognizer-container tr:nth-child(even),
+  .recognizer-container tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  @media screen and (max-width: 850px) {
+    .recognizer-container img {
+      max-width: 600px;
+    }
+  }
+  
+  @media screen and (max-width: 650px) {
+    .recognizer-container img {
+      max-width: 100%;
+    }
+  }
+  
+  .capture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .capture-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  .video {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    border: 2px solid #ddd;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  input {
+    padding: 15px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  button {
+    padding: 15px 30px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:not(:disabled):hover {
+    transform: scale(1.05);
+  }
+  
+  button:not(:disabled):active {
+    transform: scale(1);
+  }
+  
+  .capture-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .capture-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .confirm-button {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .confirm-button:hover {
+    background-color: #218838;
+  }
+  
+  .reset-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .reset-button:hover {
+    background-color: #c82333;
+  }
+  
+  .images-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .captured-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  p {
+    color: #333333;
+    margin-top: 20px;
+  }
+
+
+.admin-container {
+    width: 80%;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.photos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-card {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    width: calc(33% - 20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.user-card h2 {
+    margin-top: 0;
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.images-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Registration System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="capture-container">
+        <header class="capture-header">
+            <h1>Face Registration System</h1>
+            <video id="video" autoplay playsinline class="video"></video>
+            <div>
+                <input type="text" id="name" placeholder="Enter your name">
+                <button id="capture-button" class="capture-button">Capture Face</button>
+                <div class="images-container" id="images-container"></div>
+            </div>
+            <button id="confirm-button" class="confirm-button" style="display: none;">Confirm and Send</button>
+            <button id="reset-button" class="reset-button" style="display: none;">Recapture Images</button>
+            <p id="status"></p>
+        </header>
+    </div>
+    <script src="{{ url_for('static', filename='js/capture.js') }}"></script>
+</body>
+</html>

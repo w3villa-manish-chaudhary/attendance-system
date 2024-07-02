@@ -17,8 +17,8 @@ async def process_images(data):
         mongo_client = connect_to_mongo()
         redis_client = get_redis_connection()
 
-        db = mongo_client['face_recognition']
-        users_collection = db['users']
+        db = mongo_client['attendance']
+        users_collection = db['known_faces']
 
         base_folder = os.path.join('known_faces')
         user_folder = os.path.join(base_folder, data.username)
@@ -203,3 +203,6 @@ def generate_frames():
     finally:
         video_capture.release()
         cv2.destroyAllWindows()
+
+
+

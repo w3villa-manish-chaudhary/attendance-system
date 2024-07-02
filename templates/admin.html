@@ -11,6 +11,16 @@
         <h1>Admin Panel</h1>
         <div class="photos-container" id="photos-container"></div>
     </div>
+
+    <!-- User Card Template -->
+    <template id="user-card-template">
+        <div class="user-card">
+            <h2 class="username"></h2>
+            <div class="images-container"></div>
+            <button class="delete-button">Delete</button>
+        </div>
+    </template>
+
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
 </body>
 </html>

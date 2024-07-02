@@ -110,3 +110,7 @@ def load_unknown_faces(base_directory="unknown_faces"):
                     unknown_identifiers.append(os.path.splitext(file)[0])  # Save the identifier without the file extension
 
     return unknown_faces, unknown_identifiers
+
+
+def object_id_to_str(oid):
+    return str(oid)

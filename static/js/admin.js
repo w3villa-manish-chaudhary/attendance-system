@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const photosContainer = document.getElementById('photos-container');
+    const userCardTemplate = document.getElementById('user-card-template').content;
 
     // Function to fetch user data
     async function fetchUserData() {
@@ -15,29 +16,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to display user data
     function displayUserData(users) {
         users.forEach(user => {
-            const userDiv = document.createElement('div');
-            userDiv.classList.add('user-card');
+            const userCard = userCardTemplate.cloneNode(true);
+            const userDiv = userCard.querySelector('.user-card');
+            userDiv.dataset.userId = user.id;
 
-            const username = document.createElement('h2');
+            const username = userCard.querySelector('.username');
             username.textContent = user.username;
-            userDiv.appendChild(username);
 
-            const imagesDiv = document.createElement('div');
-            imagesDiv.classList.add('images-container');
-            user.images.forEach(image => {
+            const imagesDiv = userCard.querySelector('.images-container');
+            
+            // Display up to four images
+            user.images.slice(0, 4).forEach(image => {
                 const img = document.createElement('img');
-                img.src = `/known_faces/${username}/${image}`;
+                img.src = `data:image/jpeg;base64,${image.data}`;
+                img.alt = image.filename;
                 imagesDiv.appendChild(img);
             });
-            userDiv.appendChild(imagesDiv);
 
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.classList.add('delete-button');
+            const deleteButton = userCard.querySelector('.delete-button');
             deleteButton.addEventListener('click', () => {
                 deleteUser(user.id, userDiv);
             });
-            userDiv.appendChild(deleteButton);
 
             photosContainer.appendChild(userDiv);
         });
@@ -59,6 +58,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchUserData();
 });
-
-
-

@@ -47,7 +47,6 @@ async def known_faces():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-
 async def delete_user_from_db(user_id: str):
     try:
         client = connect_to_mongo()
@@ -56,12 +55,30 @@ async def delete_user_from_db(user_id: str):
 
         user_object_id = ObjectId(user_id)
         
+        # Retrieve the user details before deleting
+        user = users_collection.find_one({"_id": user_object_id})
+        
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+        
+        
         result = users_collection.delete_one({"_id": user_object_id})
         
         if result.deleted_count == 1:
-            return {"message": "User deleted successfully"}
+            
+            user_folder = os.path.join("known_faces", user['username'])
+            if os.path.exists(user_folder):
+                for filename in os.listdir(user_folder):
+                    file_path = os.path.join(user_folder, filename)
+                    try:
+                        if os.path.isfile(file_path):
+                            os.unlink(file_path)
+                    except Exception as e:
+                        raise HTTPException(status_code=500, detail=f"Error deleting file {file_path}: {str(e)}")
+                os.rmdir(user_folder)
+            
+            return {"message": "User and images deleted successfully"}
         else:
             raise HTTPException(status_code=404, detail="User not found")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
